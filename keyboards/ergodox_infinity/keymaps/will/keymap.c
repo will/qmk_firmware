@@ -19,31 +19,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * left hand
  *    +-------+-----+-----+-----+-----+-----+-----+
- *    |   =   |  0  |  2  |  3  |  4  |  5  | ESC |
+ *    |   =   |  0  |  2  |  3  |  4  |  5  |⌘ ⇧ [|
  *    +-------+-----+-----+-----+-----+-----+-----+
- *    |   \   |  Q  |  W  |  E  |  R  |  T  |LCK-1|
+ *    |  TAB  |  Q  |  W  |  E  |  R  |  T  |LCK-1|
  *    +-------+-----+-----+-----+-----+-----+     |
- *    |  TAB  |  A  |  S  |  D  |  F  |  G  +-----+
+ *    |Ctr/esc|  A  |  S  |  D  |  F  |  G  +-----+
  *    +-------+-----+-----+-----+-----+-----+ f1  |
  *    | LSHIFT|  Z  |  X  |  C  |  V  |  B  |     |
  *    +-+-----+-----+-----+-----+-----+-----+-----+
  *      |LGUI |  `  |  \  |LEFT |RIGHT|
  *      +-----+-----+-----+-----+-----+   +-----+-----+
- *                                        |LCTRL| LALT|
+ *                                        |LCTRL|reset|
  *                                  +-----+-----+-----+
  *                                  |     |     | HOME|
- *                                  |BKSPC| DEL +-----+
+ *                                  |BKSPC| LGui+-----+
  *                                  |     |     | END |
  *                                  +-----+-----+-----+
  */
-        KC_EQL,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5, KC_ESC,
-        KC_BSLS, KC_Q,   KC_W,    KC_E,    KC_R,    KC_T, TG(L1),
-        KC_TAB,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,
+        KC_EQL,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5, LGUI(LSFT(KC_LBRC)),
+        KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T, TG(L1),
+  CTL_T(KC_ESC), KC_A,   KC_S,    KC_D,    KC_F,    KC_G,
         KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, MO(L1),
         KC_LGUI, KC_GRV, KC_BSLS, KC_LEFT, KC_RGHT,
-                                                      KC_LCTL, KC_LALT,
+                                                      KC_LALT, RESET,
                                                                KC_HOME,
-                                             KC_BSPC, KC_DEL,  KC_END,
+                                             KC_BSPC, KC_LGUI, KC_END,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        |LCK-2|  6  |  7  |  8  |  9  |  0  |   -   |
@@ -78,29 +78,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    +-------+-----+-----+-----+-----+-----+-----+
  *    | reset | f1  | f2  | f3  | f4  | f5  | f11 |
  *    +-------+-----+-----+-----+-----+-----+-----+
- *    |       |     |     |     |     |     |     |
+ *    |       |  !  |  @  |  [  |  ]  |  |  |     |
  *    +-------+-----+-----+-----+-----+-----+     |
- *    |       |     |     |     |     |     +-----+
+ *    |       |  #  |  $  |  (  |  )  |  `  +-----+
  *    +-------+-----+-----+-----+-----+-----+     |
- *    |       |     |     |     |     |     |     |
+ *    |       |  %  |  ^  |  {  |  }  |  ~  |     |
  *    +-+-----+-----+-----+-----+-----+-----+-----+
  *      |     |     |     |     |     |
  *      +-----+-----+-----+-----+-----+   +-----+-----+
  *                                        |     |     |
  *                                  +-----+-----+-----+
- *                                  |     |     |     |
+ *                                  |     |     | home|
  *                                  |     |     +-----+
- *                                  |     |     |     |
+ *                                  |     |     | end |
  *                                  +-----+-----+-----+
  */
-       RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                      KC_TRNS, KC_TRNS,
-                                                               KC_TRNS,
-                                             KC_TRNS, KC_TRNS, KC_TRNS,
+       RESET  ,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F11,
+       KC_TRNS,KC_EXLM,KC_AT,  KC_LBRC,KC_RBRC,KC_PIPE,KC_TRNS,
+       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
+       KC_TRNS,KC_PERC,KC_CIRC,KC_LCBR,KC_RCBR,KC_TILD,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       KC_TRNS,KC_TRNS,
+                                               KC_HOME,
+                               KC_TRNS,KC_TRNS,KC_END,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        | f12 | f6  | f7  | f8  | f9  | f10 | reset |
