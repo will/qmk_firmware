@@ -5,6 +5,7 @@
 
 #define L0 0 // default layer
 #define L1 1
+#define LSYMB 1
 #define L2 2
 
 enum custom_keycodes {
@@ -23,52 +24,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    +-------+-----+-----+-----+-----+-----+-----+
  *    |  TAB  |  Q  |  W  |  E  |  R  |  T  |LCK-1|
  *    +-------+-----+-----+-----+-----+-----+     |
- *    |Ctr/esc|  A  |  S  |  D  |  F  |  G  +-----+
+ *    | Ctrl  |  A  |  S  |  D  |  F  |  G  +-----+
  *    +-------+-----+-----+-----+-----+-----+ f1  |
- *    | LSHIFT|  Z  |  X  |  C  |  V  |  B  |     |
+ *    | LSHFT |  Z  |  X  |  C  |  V  |  B  |     |
  *    +-+-----+-----+-----+-----+-----+-----+-----+
- *      |LGUI |  `  |  \  |LEFT |RIGHT|
+ *      |LALT |  `  |  \  |LEFT |RIGHT|
  *      +-----+-----+-----+-----+-----+   +-----+-----+
- *                                        |LCTRL|reset|
+ *                                        |LALT |reset|
  *                                  +-----+-----+-----+
- *                                  |     |     | HOME|
+ *                                  |     | esc/| HOME|
  *                                  |BKSPC| LGui+-----+
  *                                  |     |     | END |
  *                                  +-----+-----+-----+
  */
         KC_EQL,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5, LGUI(LSFT(KC_LBRC)),
         KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T, TG(L1),
-  CTL_T(KC_ESC), KC_A,   KC_S,    KC_D,    KC_F,    KC_G,
+        KC_LCTL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,
         KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, MO(L1),
-        KC_LGUI, KC_GRV, KC_BSLS, KC_LEFT, KC_RGHT,
-                                                      KC_LALT, RESET,
-                                                               KC_HOME,
-                                             KC_BSPC, KC_LGUI, KC_END,
+        KC_LALT, KC_GRV, KC_BSLS, KC_LEFT, KC_RGHT,
+                                                      KC_ESC, RESET,
+                                                              KC_HOME,
+                                            KC_BSPC, KC_LGUI, KC_END,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
- *        |LCK-2|  6  |  7  |  8  |  9  |  0  |   -   |
+ *        |⌘ ⇧ ]|  6  |  7  |  8  |  9  |  0  |   -   |
  *        +-----+-----+-----+-----+-----+-----+-------+
- *        |  [  |  Y  |  U  |  I  |  O  |  P  |   ]   |
+ *        |  [  |  Y  |  U  |  I  |  O  |  P  |   \   |
  *        |     +-----+-----+-----+-----+-----+-------+
  *        +-----+  H  |  J  |  K  |  L  |  ;  |   '   |
  *        | f1  +-----+-----+-----+-----+-----+-------+
  *        |     |  N  |  M  |  ,  |  .  |  /  | RSHIFT|
  *        +-----+-----+-----+-----+-----+-----+-----+-+
- *                    |LEFT |DOWN | UP  |RIGHT| RGUI|
+ *                    | UP  |DOWN | UP  |RIGHT| RALT|
  *    +-----+-----+   +-----+-----+-----+-----+-----+
- *    | RALT|RCTRL|
+ *    |reset|RCTRL|
  *    +-----+-----+-----+
  *    | PGUP|     |     |
  *    +-----+ ENT | SPC |
  *    | PGDN|     |     |
  *    +-----+-----+-----+
  */
-             TG(L2),  KC_6,   KC_7,    KC_8,    KC_9,   KC_0,     KC_MINS,
-             KC_LBRC, KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,     KC_RBRC,
-                      KC_H,   KC_J,    KC_K,    KC_L,   KC_SCLN,  KC_QUOT,
-             MO(L1),  KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH,  KC_RSFT,
-                              KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT, KC_RGUI,
-             KC_RALT, KC_RCTL,
+ LGUI(LSFT(KC_RBRC)), KC_6,   KC_7,    KC_8,    KC_9,   KC_0,             KC_MINS,
+             KC_LBRC, KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,             KC_BSLS,
+                      KC_H,   KC_J,    KC_K,    KC_L,   LT(L1, KC_SCLN),  KC_QUOT,
+             MO(L1),  KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH,          KC_RSFT,
+                              KC_UP,   KC_DOWN, KC_UP,  KC_RIGHT,         KC_RALT,
+             RESET, KC_RCTL,
              KC_PGUP,
              KC_PGDN, KC_ENT, KC_SPC
     ),
@@ -97,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,KC_EXLM,KC_AT,  KC_LBRC,KC_RBRC,KC_PIPE,KC_TRNS,
        KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
        KC_TRNS,KC_PERC,KC_CIRC,KC_LCBR,KC_RCBR,KC_TILD,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       BL_TOGG,BL_BRTG,BL_INC, BL_DEC, KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_HOME,
                                KC_TRNS,KC_TRNS,KC_END,
@@ -107,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        |     |     |     |     |     |     |       |
  *        |     +-----+-----+-----+-----+-----+-------+
- *        +-----+     |     |     |     |     |       |
+ *        +-----+     |play |prev |next |     |       |
  *        |     +-----+-----+-----+-----+-----+-------+
- *        |     |     |     |     |     |     |       |
+ *        |     |     |mute |volUp|volDn|     |       |
  *        +-----+-----+-----+-----+-----+-----+-----+-+
  *                    |     |     |     |     |     |
  *    +-----+-----+   +-----+-----+-----+-----+-----+
@@ -122,8 +123,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
        KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                KC_TRNS, KC_MPLY, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS,
                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
