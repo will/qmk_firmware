@@ -33,9 +33,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      +-----+-----+-----+-----+-----+   +-----+-----+
  *                                        | ESC | lead|
  *                                  +-----+-----+-----+
- *                                  |     |     | HOME|
+ *                                  |     |     | PGUP|
  *                                  |BKSPC| LGui+-----+
- *                                  |     |     | END |
+ *                                  |     |     | PGDN|
  *                                  +-----+-----+-----+
  */
          KC_EQL,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5, LGUI(LSFT(KC_LBRC)),
@@ -44,8 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, MO(LSYMB),
          KC_LALT, KC_GRV, KC_BSLS, KC_LEFT, KC_RGHT,
                                                       KC_ESC, KC_LEAD,
-                                                              KC_HOME,
-                                            KC_BSPC, KC_LGUI, KC_END,
+                                                              KC_PGUP,
+                                            KC_BSPC, KC_LGUI, KC_PGDN,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        |⌘ ⇧ ]|  6  |  7  |  8  |  9  |  0  |   -   |
@@ -322,6 +322,14 @@ void matrix_scan_user(void) {
 
     SEQ_ONE_KEY(KC_G) {
       layer_invert(LGAME);
+    }
+
+    SEQ_ONE_KEY(KC_PGUP) {
+      tap_code(KC_HOME);
+    }
+
+    SEQ_ONE_KEY(KC_PGDN) {
+      tap_code(KC_END);
     }
 
   }
