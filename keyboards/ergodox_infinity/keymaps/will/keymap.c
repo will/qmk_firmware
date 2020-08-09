@@ -335,25 +335,27 @@ void matrix_scan_user(void) {
   }
 
 
-    //uint8_t layer = biton32(layer_state);
+  // here to end was commented out for inifinity,
+  // not sure if that was necessary or not
+    uint8_t layer = biton32(layer_state);
 
-  /**
     ergodox_board_led_off();
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
+        case LSYMB:
             ergodox_right_led_1_on();
             break;
-        case 2:
+        case LGAME:
             ergodox_right_led_2_on();
+            break;
+        case LMDIA:
+            ergodox_right_led_3_on();
             break;
         default:
             // none
             break;
     }
-    */
 
 };
